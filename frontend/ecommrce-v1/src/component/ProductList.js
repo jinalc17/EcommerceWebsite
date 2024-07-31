@@ -30,7 +30,7 @@ const ProductList = () => {
                     <p>${product.price}</p>
                     <img src={product.image} alt={product.name} className="product-image" />
                     <div className="product-buttons">
-                        <Link to={`/product/${product.id}`} className="view-details-button">View Details</Link>
+                        <Link to={`/products/${product.id}`} className="view-details-button">View Details</Link>
                         <button onClick={() => addToCart(product)} className="add-to-cart-button">Add to Cart</button>
                     </div>
                 </div>

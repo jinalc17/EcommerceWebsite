@@ -29,4 +29,9 @@ public class ProductController {
     public ResponseEntity<Optional<Product>> getSingleProduct(@PathVariable String id) {
         return new ResponseEntity<>(productService.singleProduct(id), HttpStatus.OK);
     }
+
+    @GetMapping("/category/{category}")
+    public List<Product> getProductsByCategory(@PathVariable String category) {
+        return productService.getProductsByCategory(category);
+    }
 }
