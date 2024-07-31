@@ -19,14 +19,14 @@ import java.util.Optional;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProducts(){
+    public ResponseEntity<List<Product>> getAllProducts() {
         return new ResponseEntity<>(productService.allProducts(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Product>> getSingleProduct(@PathVariable ObjectId id){
+    public ResponseEntity<Optional<Product>> getSingleProduct(@PathVariable String id) {
         return new ResponseEntity<>(productService.singleProduct(id), HttpStatus.OK);
     }
-
 }
