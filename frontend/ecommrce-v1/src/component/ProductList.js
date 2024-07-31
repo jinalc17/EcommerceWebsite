@@ -1,13 +1,12 @@
-// src/components/ProductList.js
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './ProductList.css'; // Ensure you have your CSS file for ProductList
+import './ProductList.css';
+import { CartContext } from './CartContext'; 
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
+    const { addToCart } = useContext(CartContext);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -22,11 +21,6 @@ const ProductList = () => {
         fetchProducts();
     }, []);
 
-    const addToCart = (product) => {
-        setCart([...cart, product]);
-        console.log('Added to cart:', product);
-    };
-
     return (
         <div className="product-list">
             {products.map(product => (
@@ -34,7 +28,7 @@ const ProductList = () => {
                     <h3>{product.name}</h3>
                     <p>{product.shortDescription}</p>
                     <p>${product.price}</p>
-                    <img src={product.image} alt={product.name} />
+                    <img src={product.image} alt={product.name} className="product-image" />
                     <div className="product-buttons">
                         <Link to={`/product/${product.id}`} className="view-details-button">View Details</Link>
                         <button onClick={() => addToCart(product)} className="add-to-cart-button">Add to Cart</button>

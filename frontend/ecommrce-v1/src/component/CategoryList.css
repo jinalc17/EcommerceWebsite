@@ -1,0 +1,46 @@
+.category-list-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .tab-button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 4px 4px 0 0;
+  }
+  
+  .tab-button.active {
+    background-color: #fff;
+    border-bottom: 2px solid #007bff;
+    font-weight: bold;
+  }
+  
+  .category-list {
+    padding: 20px;
+  }
+  
+  .category-item {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .category-item h3 {
+    margin-top: 0;
+  }
+  
+  .category-item p {
+    margin-bottom: 0;
+  }
+  
