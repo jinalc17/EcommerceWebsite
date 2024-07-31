@@ -1,0 +1,19 @@
+.home-button {
+    position: fixed;
+    top: 12px;
+    left: 20px;
+    z-index: 1000;
+  }
+  
+  .home-button-image {
+    width: 24px;
+    height: auto;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .home-button-image:hover {
+    opacity: 0.8;
+  }
+  
+  

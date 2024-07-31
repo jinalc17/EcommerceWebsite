@@ -52,22 +52,26 @@ const CategoryList = () => {
         ))}
       </div>
       <div className="product-list">
-        {products.map(product => (
-          <div className="product-item" key={product.id}>
-            <h3>{product.name}</h3>
-            <p>{product.shortDescription}</p>
-            <p>${product.price}</p>
-            <img src={product.image} alt={product.name} className="product-image" />
-            <div className="product-buttons">
-              <Link to={`/products/${product.id}`} className="view-details-button">
-                View Details
-              </Link>
-              <button onClick={() => addToCart(product)} className="add-to-cart-button">
-                Add to Cart
-              </button>
+        {products.length > 0 ? (
+          products.map(product => (
+            <div className="product-item" key={product.id}>
+              <h3>{product.name}</h3>
+              <p>{product.shortDescription}</p>
+              <p>${product.price}</p>
+              <img src={product.image} alt={product.name} className="product-image" />
+              <div className="product-buttons">
+                <Link to={`/products/${product.id}`} className="view-details-button">
+                  View Details
+                </Link>
+                <button onClick={() => addToCart(product)} className="add-to-cart-button">
+                  Add to Cart
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No products available.</p>
+        )}
       </div>
     </div>
   );
