@@ -14,6 +14,19 @@
 
 **Database**: MongoDB (Atlas)
 
+### Steps to run the Project
+Server:
+1. Navigate to Your Project Directory and Open your terminal or command prompt.
+2. Navigate to the root directory of your Spring Boot project and you can run:
+### `./gradlew bootRun`
+
+Server will run on http://localhost:8080/api/v1/products
+
+Client:
+In the project directory, you can run:
+### `npm start`
+ It should Open http://localhost:3000
+
 ### Project Setup
 
 1. **Project Initialization**: Repository created on GitHub and cloned to local machine.
