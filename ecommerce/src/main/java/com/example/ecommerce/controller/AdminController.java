@@ -15,15 +15,15 @@ public class AdminController {
 
     // Hardcoded admin credentials for example purposes
     private static final String ADMIN_USERNAME = "admin";
-    private static final String ADMIN_PASSWORD = "admin123";
+    private static final String ADMIN_PASSWORD = "admin";
 
     @PostMapping("/login")
     public ResponseEntity<AdminLoginResponse> login(@RequestBody AdminLoginRequest request) {
         if (ADMIN_USERNAME.equals(request.getUsername()) && ADMIN_PASSWORD.equals(request.getPassword())) {
-            String token = "mock-token";
-            AdminLoginResponse response = new AdminLoginResponse("Login successful", token);
+            // No token needed
+            AdminLoginResponse response = new AdminLoginResponse("Login successful");
             return ResponseEntity.ok(response);
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new AdminLoginResponse("Invalid credentials", null));
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new AdminLoginResponse("Invalid credentials"));
     }
 }

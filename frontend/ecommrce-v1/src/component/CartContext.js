@@ -6,17 +6,23 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState({});
 
     const addToCart = (product, quantity = 1) => {
-        console.log('Adding to cart:', product, quantity);
-      setCart(prevCart => {
-          const updatedCart = { ...prevCart };
-          if (updatedCart[product.id]) {
-              updatedCart[product.id].quantity += quantity;
-          } else {
-              updatedCart[product.id] = { ...product, quantity };
-          }
-          return updatedCart;
-      });
-  };
+        setCart(prevCart => {
+            console.log('Previous cart state:', prevCart);
+            console.log('Adding product:', product.name, 'with quantity:', quantity);
+    
+            const updatedCart = { ...prevCart };
+            if (updatedCart[product.id]) {
+                updatedCart[product.id].quantity += quantity;
+            } else {
+                updatedCart[product.id] = { ...product, quantity };
+            }
+    
+            console.log('Updated cart state:', updatedCart);
+            return updatedCart;
+        });
+    };
+    
+    
   
 
     const removeFromCart = (id) => {

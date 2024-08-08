@@ -6,7 +6,7 @@ import './ProductDetails.css'; // Ensure you have your CSS file for ProductDetai
 const ProductDetails = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
-    const [cart, setCart] = useState([]);
+    const { addToCart } = useContext(CartContext);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -21,9 +21,8 @@ const ProductDetails = () => {
         fetchProduct();
     }, [id]);
 
-    const addToCart = (product) => {
-        setCart([...cart, product]);
-        console.log('Added to cart:', product);
+    const handleAddToCart = () => {
+        addToCart(product);
     };
 
     if (!product) {
@@ -36,7 +35,7 @@ const ProductDetails = () => {
             <p>{product.shortDescription}</p>
             <p className="price">${product.price}</p>
             <img src={product.image} alt={product.name} />
-            <button onClick={() => addToCart(product)} className="add-to-cart-button">Add to Cart</button>
+            <button onClick={() => handleAddToCart(product)} className="add-to-cart-button">Add to Cart</button>
         </div>
     );
 };
