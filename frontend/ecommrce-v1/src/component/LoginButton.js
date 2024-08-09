@@ -15,9 +15,19 @@ const LoginButton = () => {
   return (
     <div className="login-button">
       {user ? (
-        <button className="login-button-button" onClick={handleLogout}>
-          Logout
-        </button>
+        <>
+        <div className="dashboard-button">
+            <Link to="/admin-dashboard">
+              <button className="login-button-button">
+                Dashboard
+              </button>
+            </Link>
+          </div>
+          <button className="login-button-button" onClick={handleLogout}>
+            Logout
+          </button>
+          
+        </>
       ) : (
         <Link to="/login">
           <button className="login-button-button">
@@ -27,6 +37,7 @@ const LoginButton = () => {
       )}
     </div>
   );
+  
 };
 
 export default LoginButton;

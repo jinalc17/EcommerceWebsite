@@ -15,12 +15,9 @@ public class Product {
     @Id
     private String id;
     private String name;
-
     private double price;
-     private String shortDescription;
-
-     private String image;
-
-     private String category;
+    private String shortDescription;
+    private String image;
+    private String category;
 
 }

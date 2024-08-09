@@ -1,28 +1,35 @@
-/* Basic layout */
 .dashboard-container {
     display: flex;
     height: 100vh;
-    flex-direction: row; /* Adjust direction to row for side-by-side layout */
+    flex-direction: row;
     padding: 20px;
     background-color: #ecf0f1;
 }
 
-/* Main content section */
+/* Adjust main content to have a specific width ratio */
 .main-content {
-    flex: 1;
     display: flex;
-    flex-direction: row; /* Side by side layout */
-    gap: 20px; /* Space between the sections */
+    width: 100%;
+    gap: 20px;
+}
+
+/* Categories section takes 25% */
+.manage-categories-section {
+    flex: 0 0 25%;
+}
+
+/* Products section takes 75% */
+.manage-products-section {
+    flex: 0 0 75%;
 }
 
 /* Content styles */
 .content-section {
-    flex: 1;
-    margin-top: 2.5em;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Adds scroll if content overflows */
 }
 
 /* Button styles */
@@ -38,7 +45,7 @@
     text-align: center;
     transition: background-color 0.3s, transform 0.2s;
     font-size: 1em;
-    height: 2em
+    height: 2em;
 }
 
 .button:hover {
@@ -49,18 +56,6 @@
 .button:active {
     background-color: #1f678f;
     transform: translateY(0);
-}
-
-/* Edit Section */
-.edit-section {
-    margin-top: 20px;
-}
-
-.edit-section input {
-    padding: 0.5em;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    margin-right: 10px;
 }
 
 /* Table styles */
@@ -85,8 +80,12 @@
     background-color: #f9f9f9;
 }
 
-.dashboard-container input[type="text"] {
-    width: 30%;
+/* Input styles */
+.dashboard-container input[type="text"],
+.dashboard-container input[type="number"],
+.dashboard-container textarea,
+.dashboard-container select {
+    width: 100%; /* Ensure full width within their container */
     padding: 0.75em;
     border-radius: 4px;
     border: 1px solid #ddd;
@@ -95,25 +94,18 @@
     margin-bottom: 1em;
 }
 
-.dashboard-container input[type="text"]:focus {
+.dashboard-container input[type="text"]:focus,
+.dashboard-container input[type="number"]:focus,
+.dashboard-container textarea:focus,
+.dashboard-container select:focus {
     border-color: #3498db;
     outline: none;
     box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
-select {
-    width: 30%;
-    padding: 0.75em;
+/* Image styles in table */
+.table img {
+    display: block;
+    margin: auto;
     border-radius: 4px;
-    border: 1px solid #ddd;
-    font-size: 1em;
-    box-sizing: border-box;
-    margin-bottom: 1em;
-    margin-left: 1em;
-}
-
-select:focus {
-    border-color: #3498db;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }

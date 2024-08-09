@@ -2,27 +2,36 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './CategoryList.css';
-import { CartContext } from './CartContext'; 
-
-const categories = [
-  { id: '1', name: 'Laptop', type: 'laptop' },
-  { id: '2', name: 'Tablet', type: 'tablet' },
-  { id: '3', name: 'Smartphone', type: 'smartphone' },
-];
+import { CartContext } from './CartContext';
 
 const CategoryList = () => {
+  const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [activeTab, setActiveTab] = useState('all');
   const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/api/v1/categories');
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(
+        const endpoint =
           activeTab === 'all'
             ? 'http://localhost:8080/api/v1/products'
-            : `http://localhost:8080/api/v1/products/category/${activeTab}`
-        );
+            : `http://localhost:8080/api/v1/products/category/${encodeURIComponent(activeTab)}`;
+        
+        const response = await axios.get(endpoint);
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -32,20 +41,25 @@ const CategoryList = () => {
     fetchProducts();
   }, [activeTab]);
 
+  // Convert category names to lowercase and encode spaces
+  const handleTabClick = (categoryName) => {
+    setActiveTab(categoryName.toLowerCase());
+  };
+
   return (
     <div className="category-list-container">
       <div className="tabs">
         <button
           className={`tab-button ${activeTab === 'all' ? 'active' : ''}`}
-          onClick={() => setActiveTab('all')}
+          onClick={() => handleTabClick('all')}
         >
           All Products
         </button>
         {categories.map(category => (
           <button
             key={category.id}
-            className={`tab-button ${activeTab === category.type ? 'active' : ''}`}
-            onClick={() => setActiveTab(category.type)}
+            className={`tab-button ${activeTab === category.name ? 'active' : ''}`}
+            onClick={() => handleTabClick(category.name)}
           >
             {category.name}
           </button>
