@@ -4,7 +4,7 @@ import './CartDetails.css';
 import axios from 'axios';
 
 const CartDetails = () => {
-    const { cart, removeFromCart } = useContext(CartContext);
+    const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
     const [showCheckout, setShowCheckout] = useState(false);
     const [userDetails, setUserDetails] = useState({
         name: '',
@@ -30,6 +30,13 @@ const CartDetails = () => {
 
     const handleRemove = (id) => {
         removeFromCart(id);
+    };
+
+    const handleQuantityChange = (id, change) => {
+        const newQuantity = cart[id].quantity + change;
+        if (newQuantity > 0) {
+            updateQuantity(id, newQuantity);
+        }
     };
 
     const handleCheckoutClick = () => {
@@ -84,8 +91,12 @@ const CartDetails = () => {
                                     <img src={item.image} alt={item.name} />
                                     <div className="item-details">
                                         <p>{item.name}</p>
-                                        <p>Quantity: {item.quantity}</p>
                                         <p>Price: ${item.price}</p>
+                                        <div className="quantity-controls">
+                                            <button onClick={() => handleQuantityChange(item.id, -1)}>-</button>
+                                            <span>Quantity: {item.quantity}</span>
+                                            <button onClick={() => handleQuantityChange(item.id, 1)}>+</button>
+                                        </div>
                                         <button onClick={() => handleRemove(item.id)} className='remove-button'>Remove</button>
                                     </div>
                                 </li>
@@ -98,7 +109,7 @@ const CartDetails = () => {
                     <p>Subtotal: ${subtotal.toFixed(2)}</p>
                     <p>Tax (18%): ${tax.toFixed(2)}</p>
                     <p>Total: ${total.toFixed(2)}</p>
-                    <button onClick={handleCheckoutClick} className="checkout-button" >Checkout</button>
+                    <button onClick={handleCheckoutClick} className="checkout-button">Checkout</button>
                 </div>
             </div>
             {showCheckout && (

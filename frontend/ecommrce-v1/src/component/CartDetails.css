@@ -48,6 +48,7 @@
 
 
 .remove-button {
+    margin-top: 20px;
     background-color: #e94939;
     color: white;
     border: none;
@@ -104,3 +105,20 @@
 .checkout-form button:hover {
     background-color: #218838;
 }
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-controls button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.quantity-controls span {
+    margin: 0 10px;
+}
+

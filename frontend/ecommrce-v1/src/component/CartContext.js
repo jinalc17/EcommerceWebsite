@@ -22,14 +22,21 @@ export const CartProvider = ({ children }) => {
         });
     };
     
-    
-  
-
     const removeFromCart = (id) => {
-        setCart(prevCart => {
+        setCart((prevCart) => {
             const { [id]: removedItem, ...rest } = prevCart;
             return rest;
         });
+    };
+
+    const updateQuantity = (id, newQuantity) => {
+        setCart((prevCart) => ({
+            ...prevCart,
+            [id]: {
+                ...prevCart[id],
+                quantity: newQuantity,
+            },
+        }));
     };
 
     const getCartCount = () => {
@@ -37,7 +44,7 @@ export const CartProvider = ({ children }) => {
     };
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, getCartCount }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity,getCartCount }}>
             {children}
         </CartContext.Provider>
     );
