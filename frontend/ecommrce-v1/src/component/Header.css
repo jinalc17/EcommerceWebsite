@@ -1,0 +1,30 @@
+/* src/component/Header.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    height: 30px; /* Adjusted height */
+  }
+  
+  .header-content {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .header-text {
+    font-size: 1.5em; /* Adjust the size as needed */
+    font-weight: bold; /* Optional, for emphasis */
+    color: #333; /* Adjust the color as needed */
+  }
+  
+  .header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  

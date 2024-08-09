@@ -1,5 +1,5 @@
-/* Center the form on the page */
-form {
+/* AdminLogin.css */
+.admin-login-form {
     max-width: 400px;
     margin: 0 auto;
     padding: 1em;
@@ -8,18 +8,17 @@ form {
     border-radius: 4px;
 }
 
-/* Style the form labels and inputs */
-form div {
+.admin-login-form div {
     margin-bottom: 1em;
 }
 
-form label {
+.admin-login-form label {
     margin-bottom: .5em;
     color: #333333;
     display: block;
 }
 
-form input {
+.admin-login-form input {
     border: 1px solid #ddd;
     padding: .5em;
     font-size: 1em;
@@ -28,8 +27,7 @@ form input {
     border-radius: 4px;
 }
 
-/* Style the submit button */
-form button {
+.admin-login-form button {
     padding: 0.7em;
     color: #fff;
     background-color: #007BFF;
@@ -39,6 +37,6 @@ form button {
     width: 100%;
 }
 
-form button:hover {
+.admin-login-form button:hover {
     background-color: #0056b3;
 }

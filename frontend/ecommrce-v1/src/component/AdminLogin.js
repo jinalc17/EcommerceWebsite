@@ -18,7 +18,7 @@ const AdminLogin = () => {
             if (response.status === 200) {                
                 const { user } = response.data;
                 login(user); 
-                navigate('/admin-dashboard'); 
+                navigate('/admin-dashboard');               
             } else {
                 alert('Invalid credentials');
             }
@@ -28,7 +28,7 @@ const AdminLogin = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="admin-login-form" onSubmit={handleSubmit}>
             <div>
                 <label>Username</label>
                 <input

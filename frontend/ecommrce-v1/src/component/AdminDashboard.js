@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useAuth } from './AuthContext';
 import './AdminDashboard.css';
 
@@ -13,10 +12,9 @@ const AdminDashboard = () => {
     const [editCategoryName, setEditCategoryName] = useState('');
     const [editingProductId, setEditingProductId] = useState(null);
     const [editProduct, setEditProduct] = useState({ name: '', category: '' });
-    const { user } = useAuth();
-    const navigate = useNavigate();
+    useAuth();
 
-   // Fetch categories
+    // Fetch categories and products
     const fetchCategories = async () => {
         try {
             const result = await axios.get('http://localhost:8080/api/v1/categories');
@@ -26,7 +24,6 @@ const AdminDashboard = () => {
         }
     };
 
-    // Fetch products
     const fetchProducts = async () => {
         try {
             const result = await axios.get('http://localhost:8080/api/v1/products');
@@ -35,6 +32,11 @@ const AdminDashboard = () => {
             console.error('Error fetching products:', error);
         }
     };
+
+    useEffect(() => {
+        fetchCategories();
+        fetchProducts();
+    }, []); // Empty dependency array means this effect runs once on mount
 
     // Add category
     const addCategory = async () => {
@@ -127,21 +129,14 @@ const AdminDashboard = () => {
     };
 
     return (
-        <div className="dashboard-container">
-            <div className="sidebar">
-                <h2>Admin Dashboard</h2>
-                <ul>
-                    <li><a href="#manage-categories">Manage Categories</a></li>
-                    <li><a href="#manage-products">Manage Products</a></li>
-                </ul>
-            </div>
+        <div className="dashboard-container">            
             <div className="main-content">
                 {/* Manage Categories */}
                 <div className="content-section" id="manage-categories">
                     <h2>Manage Categories</h2>
                     <input
                         type="text"
-                        placeholder="New Category"
+                        placeholder="Category Name"
                         value={newCategory}
                         onChange={(e) => setNewCategory(e.target.value)}
                     />

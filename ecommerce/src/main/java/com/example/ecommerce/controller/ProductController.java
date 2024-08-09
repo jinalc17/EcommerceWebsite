@@ -26,12 +26,12 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Product>> getSingleProduct(@PathVariable String id) {
+    public ResponseEntity<Optional<Product>> getSingleProduct(@PathVariable("id") String id) {
         return new ResponseEntity<>(productService.singleProduct(id), HttpStatus.OK);
     }
 
     @GetMapping("/category/{category}")
-    public List<Product> getProductsByCategory(@PathVariable String category) {
+    public List<Product> getProductsByCategory(@PathVariable("category") String category) {
         return productService.getProductsByCategory(category);
     }
 }
