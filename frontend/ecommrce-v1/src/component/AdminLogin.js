@@ -13,7 +13,8 @@ const AdminLogin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/api/v1/admin/login', { username, password });
+            const response = await axios.post('http://localhost:8080/api/v1/admin/login', 
+                { username, password });
             if (response.status === 200) {                
                 const { user } = response.data;
                 login(user); 

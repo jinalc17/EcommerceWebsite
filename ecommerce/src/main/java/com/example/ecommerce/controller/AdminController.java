@@ -20,10 +20,10 @@ public class AdminController {
     @PostMapping("/login")
     public ResponseEntity<AdminLoginResponse> login(@RequestBody AdminLoginRequest request) {
         if (ADMIN_USERNAME.equals(request.getUsername()) && ADMIN_PASSWORD.equals(request.getPassword())) {
-            // No token needed
-            AdminLoginResponse response = new AdminLoginResponse("Login successful");
+            AdminLoginResponse response = new AdminLoginResponse("Login successful", ADMIN_USERNAME);
             return ResponseEntity.ok(response);
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new AdminLoginResponse("Invalid credentials"));
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).
+                body(new AdminLoginResponse("Invalid credentials", null));
     }
 }
