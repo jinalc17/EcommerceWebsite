@@ -43,22 +43,34 @@ In the project directory, you can run:
 - `image`: String
 
 **Orders Schema (MongoDB)**
-- `products`: Array of Objects
-  - `productId`: ObjectId (Reference to Products)
-  - `quantity`: Number
-  - `price`: Number
-- `status`: String
-- `totalPrice`: Number
-- `shippingAddress`: Object
-  - `street`: String
-  - `city`: String
-  - `state`: String
-  - `zipCode`: String
-  - `country`: String
+- `user`: UserDetails
+  - `name`: String
+  - `address`: String
+  - `contact`: String
+- `items`: List of orderItems
+- `subtotal`: double
+- `tax`: double
+- `total`: double
 
-### Frontend Setup
-1. Basic structure set up for React components, including directories for components and services.
-2. State management planned to handle cart data.
+**OrderItems Schema (MongoDB)**
+- `name`: String
+- `image`: String
+- `quantity`: int
+- `price`: double
+  
+
+### Test Cases:
+1. Display products
+2. View Product Details
+3. Add to cart
+4. Update Quantity
+5. Check out products
+6. Place order
+7. Login using username: admin, pass: admin
+8. Display the dashboard
+9. CRUD category
+10. CRUD products 
+
 
 ### Notes
 - The project is set up using Git and GitHub for version control.
