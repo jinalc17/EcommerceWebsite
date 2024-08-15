@@ -56,10 +56,11 @@ const CartDetails = () => {
 
         const orderDetails = {
             user: userDetails,
-            items: cart,
+            items: Object.values(cart),
             subtotal,
             tax,
-            total
+            total,
+            id:""
         };
 
         try {
@@ -67,7 +68,7 @@ const CartDetails = () => {
             await axios.post('http://localhost:8080/api/v1/orders', orderDetails);
             alert('Order placed successfully!');
             // Clear the cart after placing the order
-            setCart({});
+            setCart([]);
             setShowCheckout(false);
         } catch (error) {
             console.error('Error placing order:', error);
