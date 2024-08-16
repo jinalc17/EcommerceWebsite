@@ -213,7 +213,8 @@ const AdminDashboard = () => {
               />
               
               {/* Short Description */}
-              <textarea
+              <input
+                type="text"
                 placeholder="Short Description"
                 value={newProduct.shortDescription}
                 onChange={(e) => setNewProduct({ ...newProduct, shortDescription: e.target.value })}

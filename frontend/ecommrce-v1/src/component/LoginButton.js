@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './LoginButton.css';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 
 const LoginButton = () => {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     if (user) {
-      logout(); 
+      logout();
+      navigate('/');
     }
   };
 

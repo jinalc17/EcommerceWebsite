@@ -4,7 +4,7 @@ import './CartDetails.css';
 import axios from 'axios';
 
 const CartDetails = () => {
-    const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
+    const { cart, removeFromCart, updateQuantity, clearCart } = useContext(CartContext);
     const [showCheckout, setShowCheckout] = useState(false);
     const [userDetails, setUserDetails] = useState({
         name: '',
@@ -67,9 +67,8 @@ const CartDetails = () => {
             // Make API call to store order information
             await axios.post('http://localhost:8080/api/v1/orders', orderDetails);
             alert('Order placed successfully!');
-            // Clear the cart after placing the order
-            setCart([]);
             setShowCheckout(false);
+            clearCart();
         } catch (error) {
             console.error('Error placing order:', error);
             alert('Failed to place order. Please try again.');

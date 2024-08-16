@@ -11,6 +11,7 @@
     display: flex;
     width: 100%;
     gap: 20px;
+    margin-top: 50px;
 }
 
 /* Categories section takes 25% */

@@ -21,6 +21,7 @@ const AdminLogin = () => {
                 navigate('/admin-dashboard');               
             } else {
                 alert('Invalid credentials');
+                navigate('/');
             }
         } catch (error) {
             alert('Login failed');
