@@ -1,11 +1,5 @@
 # E-Commerce Website
 
-**Student Name**: Jinal Chandibhamar
-
-**Student Number**: 8961760
-
-**Date**: 19/07/2024
-
 ### Technology Stack
 
 **Frontend**: ReactJS  
